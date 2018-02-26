@@ -248,6 +248,10 @@ export default class JingleSessionPC extends JingleSession {
 
         const pcOptions = { disableRtx: this.room.options.disableRtx };
 
+        if (this.room.options.gatherStats) {
+            pcOptions.maxstats = 300;
+        }
+
         if (this.isP2P) {
             // simulcast needs to be disabled for P2P (121) calls
             pcOptions.disableSimulcast = true;
